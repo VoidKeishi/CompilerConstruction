@@ -27,6 +27,7 @@ typedef enum {
   ERR_INVALIDTYPEDECL,
   ERR_INVALIDVARDECL,
   ERR_INVALIDSUBDECL,
+  ERR_MISSING_COLON,
 } ErrorCode;
 
 
@@ -48,6 +49,7 @@ typedef enum {
 #define ERM_INVALIDTYPEDECL "Invalid type declaration!"
 #define ERM_INVALIDVARDECL "Invalid variable declaration!"
 #define ERM_INVALIDSUBDECL "Invalid subroutine declaration!"
+#define ERM_MISSING_COLON "Missing ':'"
 
 void error(ErrorCode err, int lineNo, int colNo);
 void missingToken(TokenType tokenType, int lineNo, int colNo);

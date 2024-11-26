@@ -5,7 +5,7 @@
  */
 
 #include <stdlib.h>
-
+#include <string.h>
 #include "reader.h"
 #include "scanner.h"
 #include "parser.h"
@@ -15,10 +15,19 @@ Token *currentToken;
 Token *lookAhead;
 
 void scan(void) {
-  Token* tmp = currentToken;
   currentToken = lookAhead;
   lookAhead = getValidToken();
-  free(tmp);
+}
+
+void checkSpacing(Token *token1, Token *token2, int expectedSpace) {
+  int token1EndCol = token1->colNo + strlen(token1->string);
+  int actualSpace = token2->colNo - token1EndCol;
+
+  if (actualSpace > expectedSpace) {
+    int i = actualSpace - expectedSpace;
+    error(ERR_MISSING_COLON, token2->lineNo, token2->colNo-i);
+    exit(0);
+  }
 }
 
 void eat(TokenType tokenType) {
@@ -93,8 +102,8 @@ void compileConstDecls(void) {
 
 void compileConstDecl(void) {
   // TODO
-  // Bạn nào code giúp với
   eat(TK_IDENT);
+  checkSpacing(currentToken, lookAhead, 1); // Expecting 1 space
   eat(SB_EQ);
   compileConstant();
   eat(SB_SEMICOLON);
@@ -111,6 +120,7 @@ void compileTypeDecls(void) {
 void compileTypeDecl(void) {
   // TODO
   eat(TK_IDENT);
+  
   eat(SB_EQ);
   compileType();
   eat(SB_SEMICOLON);
@@ -125,8 +135,8 @@ void compileVarDecls(void) {
 }
 
 void compileVarDecl(void) {
-  // TODO
   eat(TK_IDENT);
+  checkSpacing(currentToken, lookAhead, 1); // Expecting 1 space
   eat(SB_COLON);
   compileType();
   eat(SB_SEMICOLON);
@@ -195,7 +205,6 @@ void compileConstant2(void) {
 }
 
 void compileType(void) {
-  // TODO
   switch (lookAhead->tokenType) {
     case KW_INTEGER:
       eat(KW_INTEGER);
@@ -208,11 +217,11 @@ void compileType(void) {
       break;
     case KW_ARRAY:
       eat(KW_ARRAY);
-      eat(SB_LSEL);
-      eat(TK_NUMBER);
-      eat(SB_RSEL);
+      eat(SB_LSEL);       // '['
+      eat(TK_NUMBER);     // Array size or index
+      eat(SB_RSEL);       // ']'
       eat(KW_OF);
-      compileType();
+      compileType();      // Element type
       break;
     default:
       error(ERR_INVALIDTYPE, lookAhead->lineNo, lookAhead->colNo);
