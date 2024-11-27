@@ -291,6 +291,7 @@ void compileStatements2(void) {
       compileStatements2();
       break;
     case KW_END:
+    case KW_UNTIL:
       break;
     default:
       eat(SB_SEMICOLON);
@@ -319,10 +320,14 @@ void compileStatement(void) {
   case KW_FOR:
     compileForSt();
     break;
+  case KW_REPEAT:
+    compileRepeatSt();
+    break;
     // EmptySt needs to check FOLLOW tokens
   case SB_SEMICOLON:
   case KW_END:
   case KW_ELSE:
+  case KW_UNTIL:
     break;
     // Error occurs
   default:
@@ -399,6 +404,15 @@ void compileForSt(void) {
   assert("For statement parsed ....");
 }
 
+void compileRepeatSt(void) {
+  assert("Parsing a repeat statement ....");
+  eat(KW_REPEAT);
+  compileStatements();
+  eat(KW_UNTIL);
+  compileCondition();
+  assert("Repeat statement parsed ....");
+}
+
 void compileArguments(void) {
   // TODO
   switch (lookAhead->tokenType) {
@@ -425,6 +439,7 @@ void compileArguments(void) {
     case SB_RPAR:
     case SB_RSEL:
     case KW_THEN:
+    case KW_UNTIL:
       break;
     default:
       error(ERR_INVALIDARGUMENTS, lookAhead->lineNo, lookAhead->colNo);
@@ -505,7 +520,7 @@ void compileTerm(void) {
 
 void compileTerm2(void) {
   // TODO
-  if (lookAhead->tokenType == SB_TIMES || lookAhead->tokenType == SB_SLASH) {
+  if (lookAhead->tokenType == SB_TIMES || lookAhead->tokenType == SB_SLASH || lookAhead->tokenType == SB_POWER) {
     eat(lookAhead->tokenType);
     compileFactor();
     compileTerm2();
