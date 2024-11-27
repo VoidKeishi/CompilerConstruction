@@ -209,8 +209,8 @@ void compileType(void) {
     case KW_INTEGER:
       eat(KW_INTEGER);
       break;
-    case KW_BYTE:
-      eat(KW_BYTE);
+    case KW_BYTES:
+      eat(KW_BYTES);
       break;
     case KW_CHAR:
       eat(KW_CHAR);
@@ -234,7 +234,7 @@ void compileType(void) {
 
 void compileBasicType(void) {
   // TODO
-  if (lookAhead->tokenType == KW_INTEGER || lookAhead->tokenType == KW_CHAR || lookAhead->tokenType == KW_BYTE) {
+  if (lookAhead->tokenType == KW_INTEGER || lookAhead->tokenType == KW_CHAR || lookAhead->tokenType == KW_BYTES) {
     eat(lookAhead->tokenType);
   } else {
     error(ERR_INVALIDBASICTYPE, lookAhead->lineNo, lookAhead->colNo);

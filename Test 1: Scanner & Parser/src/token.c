@@ -17,7 +17,7 @@ struct {
   {"TYPE", KW_TYPE},
   {"VAR", KW_VAR},
   {"INTEGER", KW_INTEGER},
-  {"BYTE", KW_BYTE},
+  {"BYTES", KW_BYTES},
   {"CHAR", KW_CHAR},
   {"ARRAY", KW_ARRAY},
   {"OF", KW_OF},
@@ -74,7 +74,7 @@ char *tokenToString(TokenType tokenType) {
   case KW_TYPE: return "keyword TYPE";
   case KW_VAR: return "keyword VAR";
   case KW_INTEGER: return "keyword INTEGER";
-  case KW_BYTE: return "keyword BYTE";
+  case KW_BYTES: return "keyword BYTES";
   case KW_CHAR: return "keyword CHAR";
   case KW_ARRAY: return "keyword ARRAY";
   case KW_OF: return "keyword OF";

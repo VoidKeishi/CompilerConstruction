@@ -324,8 +324,8 @@ void printToken(Token *token)
   case KW_INTEGER:
     printf("KW_INTEGER\n");
     break;
-  case KW_BYTE:
-    printf("KW_BYTE\n");
+  case KW_BYTES:
+    printf("KW_BYTES\n");
     break;
   case KW_CHAR:
     printf("KW_CHAR\n");

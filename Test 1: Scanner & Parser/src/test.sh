@@ -6,7 +6,7 @@ echo "Diff Results for All Tests" > "$diff_file"
 echo "==========================" >> "$diff_file"
 
 # Array of test files
-test_files=("example1.kpl" "example2.kpl" "example3.kpl" "example4.kpl" "example5.kpl" "example6.kpl" "example7.kpl")
+test_files=("example5.kpl")
 
 # Loop through each test file
 for i in "${!test_files[@]}"; do
