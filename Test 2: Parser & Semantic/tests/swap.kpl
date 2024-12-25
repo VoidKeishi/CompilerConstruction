@@ -1,0 +1,20 @@
+PROGRAM SWAP;
+VAR X : INTEGER;
+    Y : INTEGER;
+
+BEGIN
+  X := 10;
+  Y := 20;
+
+  CALL WRITEI(X);
+  CALL WRITEC(' ');
+  CALL WRITEI(Y);
+  CALL WRITELN;
+
+  X, Y := Y, X;
+
+  CALL WRITEI(X);
+  CALL WRITEC(' ');
+  CALL WRITEI(Y);
+  CALL WRITELN;
+END.

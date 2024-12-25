@@ -1,0 +1,95 @@
+Diff Results for All Tests
+==========================
+
+Differences for example1.kpl:
+--------------------------
+0a1
+> Program EXAMPLE1
+
+Differences for example2.kpl:
+--------------------------
+1c1,5
+< 5-27:Missing ';'
+---
+> Program EXAMPLE2
+>     Var N : Int
+>     Function F : Int
+>         Param N : Int
+> 
+
+Differences for example3.kpl:
+--------------------------
+0a1,11
+> Program EXAMPLE3
+>     Var I : Int
+>     Var N : Int
+>     Var P : Int
+>     Var Q : Int
+>     Var C : Char
+>     Procedure HANOI
+>         Param N : Int
+>         Param S : Int
+>         Param Z : Int
+> 
+
+Differences for example4.kpl:
+--------------------------
+1c1,17
+< 27-16:Missing ';'
+---
+> Program EXAMPLE4
+>     Const MAX = 10
+>     Type T = Int
+>     Var A : Arr(10,Int)
+>     Var N : Int
+>     Var CH : Char
+>     Procedure INPUT
+>         Var I : Int
+>         Var TMP : Int
+> 
+>     Procedure OUTPUT
+>         Var I : Int
+> 
+>     Function SUM : Int
+>         Var I : Int
+>         Var S : Int
+> 
+
+Differences for example6.kpl:
+--------------------------
+1c1,8
+< 8-46:Missing ';'
+---
+> Program EXAMPLE5
+>     Const C = 1
+>     Type T = Char
+>     Function F : Char
+>         Param I : Int
+>         Const B = 1
+>         Type A = Arr(5,Char)
+> 
+
+Differences for example6.kpl:
+--------------------------
+1c1,19
+< 8-46:Missing ';'
+---
+> Program EXAMPLE6
+>     Const C1 = 10
+>     Const C2 = 'a'
+>     Type T1 = Arr(10,Int)
+>     Var V1 : Int
+>     Var V2 : Arr(10,Arr(10,Int))
+>     Function F : Int
+>         Param P1 : Int
+>         Param VAR P2 : Char
+> 
+>     Procedure P
+>         Param V1 : Int
+>         Const C1 = 'a'
+>         Const C3 = 10
+>         Type T1 = Int
+>         Type T2 = Arr(10,Int)
+>         Var V2 : Arr(10,Int)
+>         Var V3 : Char
+> 
