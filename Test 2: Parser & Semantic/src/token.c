@@ -32,7 +32,7 @@ struct {
   {"DO", KW_DO},
   {"FOR", KW_FOR},
   {"TO", KW_TO},
-  // {"SUM", KW_SUM} // Added SUM keyword
+  {"SUM", KW_SUM} // Added SUM keyword
 };
 
 int keywordEq(char *kw, char *string) {
